@@ -663,7 +663,7 @@ function PBtn({onClick,bg,color,children}){
 }
 
 function PixelCard({children}){
-  return <div style={{background:"#fff",border:"3px solid #000",boxShadow:"5px 5px 0 #000",padding:20,marginBottom:16}}>{children}</div>;
+  return <div style={{background:"#fff",border:"3px solid #000",boxShadow:"5px 5px 0 #000",padding:20,marginBottom:16,overflow:"hidden"}}>{children}</div>;
 }
 
 function FieldLabel({children}){
@@ -673,7 +673,7 @@ function FieldLabel({children}){
 function RetroInput({value,onChange,placeholder,type="text"}){
   return(
     <input type={type} value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder}
-      style={{width:"100%",padding:"10px 12px",border:"3px solid #000",fontSize:15,marginBottom:14,background:CREAM,fontFamily:"'IM Fell English',serif",outline:"none",boxShadow:"2px 2px 0 #000"}}/>
+      style={{width:"100%",padding:"10px 12px",border:"3px solid #000",fontSize:15,marginBottom:14,background:CREAM,fontFamily:"'IM Fell English',serif",outline:"none",boxShadow:"2px 2px 0 #000",display:"block",maxWidth:"100%"}}/>
   );
 }
 
