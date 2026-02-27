@@ -673,7 +673,7 @@ function FieldLabel({children}){
 function RetroInput({value,onChange,placeholder,type="text"}){
   return(
     <input type={type} value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder}
-      style={{width:"100%",padding:"10px 12px",border:"3px solid #000",fontSize:15,marginBottom:14,background:CREAM,fontFamily:"'IM Fell English',serif",outline:"none",boxShadow:"2px 2px 0 #000",display:"block",maxWidth:"100%"}}/>
+      style={{width:"100%",padding:"10px 12px",border:"3px solid #000",fontSize:15,marginBottom:14,background:CREAM,fontFamily:"'IM Fell English',serif",outline:"none",boxShadow:"2px 2px 0 #000",display:"block",maxWidth:"100%",boxSizing:"border-box"}}/>
   );
 }
 
