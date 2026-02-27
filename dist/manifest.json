@@ -1,0 +1,22 @@
+{
+  "name": "Golf Score Tracker",
+  "short_name": "Golf Tracker",
+  "description": "Track your golf scores hole by hole",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f0e0",
+  "theme_color": "#1a5c38",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://api.iconify.design/emojione:golf.svg?width=192&height=192",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "https://api.iconify.design/emojione:golf.svg?width=512&height=512",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
