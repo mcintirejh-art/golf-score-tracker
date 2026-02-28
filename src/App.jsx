@@ -552,7 +552,7 @@ export default function App(){
               <div key={i} style={{textAlign:"center"}}>
                 <div style={{fontFamily:"'VT323',monospace",fontSize:13,color:"#808080"}}>{i+1}</div>
                 <select value={p} onChange={e=>{const np=[...pars];np[i]=parseInt(e.target.value);setPars(np);}}
-                  style={{width:"100%",fontFamily:"'VT323',monospace",fontSize:15,background:"#fff",border:"1px solid #808080",textAlign:"center"}}>
+                  style={{width:"100%",fontFamily:"'VT323',monospace",fontSize:15,background:"#fff",border:"1px solid #808080",textAlign:"center",textAlignLast:"center"}}>
                   {PAR_OPTIONS.map(o=><option key={o}>{o}</option>)}
                 </select>
               </div>
@@ -779,7 +779,7 @@ function WinHoleTable({label,holeOffset,pars,scores,players,onScore}){
                       return(
                         <td key={i} style={{background:s!==""?cellColor(s,pars[i]):"#fff",color:s!==""?cellTextColor(s,pars[i]):"#000",padding:0}}>
                           <select value={s} onChange={e=>onScore(pi,i,e.target.value===""?"":parseInt(e.target.value))}
-                            style={{width:"100%",border:"none",background:"transparent",textAlign:"center",fontSize:15,fontFamily:"'VT323',monospace",outline:"none",padding:"2px 0",color:"inherit",cursor:"pointer"}}>
+                            style={{width:"100%",border:"none",background:"transparent",textAlign:"center",textAlignLast:"center",fontSize:15,fontFamily:"'VT323',monospace",outline:"none",padding:"2px 0",color:"inherit",cursor:"pointer"}}>
                             <option value="">-</option>
                             {opts.map(v=><option key={v} value={v}>{v}</option>)}
                           </select>
