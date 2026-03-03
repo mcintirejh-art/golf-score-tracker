@@ -793,7 +793,7 @@ function HomeScreen({onNewRound,onHistory,roundCount,currentTheme,onTheme}){
           ROUND HISTORY {roundCount>0&&`(${roundCount})`}
         </button>
         <button onClick={onTheme} className="btn" style={{background:"var(--home-btn-bg)",color:"var(--home-btn-text)",border:"2px solid var(--home-btn-border)",fontSize:17}}>
-          🎨 <span>THEME</span>
+           <span>THEME</span>
         </button>
       </div>
       <div className="home-footer">© 2026 FAIRWAY SOFTWARE INC.</div>
