@@ -442,15 +442,144 @@ style.textContent = `
   .pdot { width: 11px; height: 11px; border-radius: 50%; border: 2px solid rgba(0,0,0,0.15); flex-shrink: 0; }
   .pname { font-size: 17px; min-width: 52px; flex-shrink: 0; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80px; }
 
-  .tbl-wrap { overflow-x: auto; margin-bottom: 10px; -webkit-overflow-scrolling: touch; border: 2px solid var(--border); border-radius: 4px; box-shadow: 0 3px 0 var(--border); }
-  .tbl-label { font-family: 'Press Start 2P', monospace; font-size: 8px; color: var(--white); letter-spacing: 2px; padding: 5px 0 3px 0; }
-  table.tbl { border-collapse: collapse; width: 100%; min-width: 360px; }
-  table.tbl th { background: var(--btn-primary-bg); color: var(--btn-primary-color); font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 6px 3px; text-align: center; border: 1px solid var(--btn-primary-border); letter-spacing: 1px; }
-  table.tbl td { font-family: 'VT323', monospace; font-size: 17px; text-align: center; border: 1px solid var(--border); padding: 3px 2px; background: var(--white); color: var(--text); }
-  table.tbl td.par-row { background: var(--fairway-pale); color: var(--text-mid); font-size: 15px; }
-  table.tbl td.tot-cell { background: var(--btn-primary-bg); color: var(--btn-primary-color); font-family: 'Press Start 2P', monospace; font-size: 8px; }
-  table.tbl td.vp-row { background: var(--off-white); font-size: 13px; }
-  .score-sel { width: 100%; border: none; background: transparent; text-align: center; text-align-last: center; font-size: 17px; font-family: 'VT323', monospace; outline: none; padding: 4px 0; color: inherit; cursor: pointer; -webkit-appearance: none; appearance: none; }
+  /* ── SCORECARD TABLE ── */
+  .tbl-wrap {
+    overflow-x: auto;
+    margin-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 3px 0 var(--border);
+  }
+  .tbl-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: var(--white);
+    letter-spacing: 2px;
+    padding: 5px 0 3px 0;
+  }
+
+  /* Base table styles */
+  table.tbl { border-collapse: collapse; width: 100%; min-width: 460px; }
+
+  /* Header row — hole numbers */
+  table.tbl th {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    padding: 10px 4px;
+    text-align: center;
+    border: 1px solid var(--btn-primary-border);
+    letter-spacing: 1px;
+    min-width: 42px;
+  }
+  table.tbl th:first-child { min-width: 64px; }
+
+  /* All data cells */
+  table.tbl td {
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    text-align: center;
+    border: 1px solid var(--border);
+    padding: 6px 2px;
+    background: var(--white);
+    color: var(--text);
+    min-width: 42px;
+  }
+  table.tbl td:first-child { min-width: 64px; }
+
+  /* PAR row */
+  table.tbl td.par-row {
+    background: var(--fairway-pale);
+    color: var(--text-mid);
+    font-size: 22px;
+    font-family: 'VT323', monospace;
+    padding: 7px 2px;
+  }
+
+  /* Total cell */
+  table.tbl td.tot-cell {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    padding: 6px 4px;
+  }
+
+  /* ±PAR row */
+  table.tbl td.vp-row {
+    background: var(--off-white);
+    font-size: 20px;
+    padding: 5px 2px;
+  }
+
+  /* Score dropdown inside cell */
+  .score-sel {
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: center;
+    text-align-last: center;
+    font-size: 28px;
+    font-family: 'VT323', monospace;
+    outline: none;
+    padding: 6px 0;
+    color: inherit;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    min-height: 44px;
+  }
+
+  /* Player name cell in scorecard */
+  .tbl-player-cell {
+    padding: 5px 7px !important;
+  }
+  .tbl-player-inner {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .tbl-player-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .tbl-player-name {
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 48px;
+  }
+
+  /* Landscape: maximize scorecard, reduce ALL margins/padding */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .screen { padding: 3px 1px; max-width: 100%; }
+    .hdr { padding: 4px 6px; }
+    .hdr-title { font-size: 9px; }
+    .hdr-sub { font-size: 11px; }
+    .statbar { padding: 3px 5px; margin-bottom: 3px; gap: 4px; }
+    .stat-pill { padding: 2px 4px; min-width: 30px; }
+    .stat-pill-lbl { font-size: 6px; }
+    .stat-pill-val { font-size: 15px; }
+    .pname { font-size: 15px; min-width: 42px; }
+    .tbl-wrap { margin-bottom: 4px; }
+    .tbl-label { padding: 2px 0 1px 0; font-size: 7px; }
+    .btn-primary { padding: 8px 10px; font-size: 9px; margin-bottom: 6px !important; }
+    table.tbl { min-width: 380px; }
+    table.tbl th { font-size: 7px; padding: 6px 2px; min-width: 34px; }
+    table.tbl th:first-child { min-width: 50px; }
+    table.tbl td { font-size: 22px; padding: 3px 1px; min-width: 34px; }
+    table.tbl td:first-child { min-width: 50px; }
+    table.tbl td.par-row { font-size: 18px; padding: 4px 1px; }
+    table.tbl td.tot-cell { font-size: 8px; padding: 3px 2px; }
+    table.tbl td.vp-row { font-size: 16px; padding: 2px 1px; }
+    .score-sel { font-size: 22px; padding: 3px 0; min-height: 32px; }
+    .tbl-player-name { font-size: 15px; max-width: 40px; }
+  }
 
   .round-card { background: var(--white); border: 2px solid var(--border); border-radius: 4px; margin-bottom: 8px; cursor: pointer; overflow: hidden; box-shadow: 0 3px 0 var(--border); transition: border-color 0.15s; }
   .round-card:hover { border-color: var(--border-dark); }
@@ -548,7 +677,6 @@ function cellBg(score,par){
   if(d<=-2) return "var(--score-eagle-bg)";
   if(d===-1) return "var(--score-birdie-bg)";
   if(d===0) return "var(--white)";
-  if(d===1) return "var(--red-light)";
   return "var(--red-light)";
 }
 function cellFg(score,par){
@@ -563,7 +691,6 @@ function hcpDiff(score,par){ return((score-par)*113/113).toFixed(1); }
 
 const PLAYER_COLORS=["#2e7d32","#0277bd","#c62828","#e65100"];
 
-// Theme option visual configs
 const THEME_VISUALS = {
   morning: { previewBg: "linear-gradient(90deg,#1a2744,#2a4a6b)", previewColor: "#a8d4f0", checkColor: "#a8d4f0", descBg: "rgba(10,20,44,0.6)", descColor: "#7ab0d8" },
   golden:  { previewBg: "linear-gradient(90deg,#1a0e04,#3a2008)", previewColor: "#f0c060", checkColor: "#f0c060", descBg: "rgba(14,8,2,0.6)",  descColor: "#c87828" },
@@ -658,7 +785,7 @@ function HomeScreen({onNewRound,onHistory,roundCount,currentTheme,onTheme}){
         <span className="logo-icon">⛳</span>
         <div className="logo-title">GOLF<br/>TRACKER</div>
         <div className="logo-sub">SCORE EDITION</div>
-        <div className="logo-ver">VER 2.0.0</div>
+        <div className="logo-ver">VER 1.0.0</div>
       </div>
       <div className="home-btns">
         <button onClick={onNewRound} className="btn btn-primary">▶ NEW ROUND</button>
@@ -666,7 +793,7 @@ function HomeScreen({onNewRound,onHistory,roundCount,currentTheme,onTheme}){
           ROUND HISTORY {roundCount>0&&`(${roundCount})`}
         </button>
         <button onClick={onTheme} className="btn" style={{background:"var(--home-btn-bg)",color:"var(--home-btn-text)",border:"2px solid var(--home-btn-border)",fontSize:17}}>
-           <span>THEME</span>
+          🎨 <span>THEME</span>
         </button>
       </div>
       <div className="home-footer">© 2026 FAIRWAY SOFTWARE INC.</div>
@@ -1167,15 +1294,15 @@ function HoleTable({label,holeOffset,pars,scores,players,onScore}){
     <div>
       <div className="tbl-label">{label}</div>
       <div className="tbl-wrap">
-        <table className="tbl" style={{minWidth:340}}>
+        <table className="tbl">
           <thead>
             <tr>
-              <th style={{minWidth:50}}>HOLE</th>
+              <th>HOLE</th>
               {pars.map((_,i)=><th key={i}>{holeOffset+i+1}</th>)}
               <th>TOT</th>
             </tr>
             <tr>
-              <td className="par-row" style={{fontFamily:"'Press Start 2P',monospace",fontSize:7,letterSpacing:1}}>PAR</td>
+              <td className="par-row" style={{fontFamily:"'Press Start 2P',monospace",fontSize:8,letterSpacing:1}}>PAR</td>
               {pars.map((p,i)=><td key={i} className="par-row">{p}</td>)}
               <td className="par-row tot-cell">{pars.reduce((a,b)=>a+b,0)}</td>
             </tr>
@@ -1187,10 +1314,10 @@ function HoleTable({label,holeOffset,pars,scores,players,onScore}){
               return(
                 <React.Fragment key={pi}>
                   <tr>
-                    <td style={{padding:"2px 4px"}}>
-                      <div style={{display:"flex",alignItems:"center",gap:4}}>
-                        <div style={{width:7,height:7,background:PLAYER_COLORS[pi],borderRadius:"50%",flexShrink:0}}/>
-                        <span style={{fontSize:14,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",maxWidth:38}}>{player}</span>
+                    <td className="tbl-player-cell">
+                      <div className="tbl-player-inner">
+                        <div className="tbl-player-dot" style={{background:PLAYER_COLORS[pi]}}/>
+                        <span className="tbl-player-name">{player}</span>
                       </div>
                     </td>
                     {ps.map((s,i)=>{
@@ -1209,12 +1336,18 @@ function HoleTable({label,holeOffset,pars,scores,players,onScore}){
                     <td className="tot-cell">{st.total||""}</td>
                   </tr>
                   <tr>
-                    <td className="vp-row" style={{fontFamily:"'Press Start 2P',monospace",fontSize:7,color:"var(--text-light)",padding:"1px 4px"}}>±PAR</td>
+                    <td className="vp-row" style={{fontFamily:"'Press Start 2P',monospace",fontSize:7,color:"var(--text-light)",padding:"2px 6px"}}>±PAR</td>
                     {ps.map((s,i)=>{
                       const diff=s!==""?parseInt(s)-pars[i]:null;
-                      return <td key={i} className="vp-row" style={{color:diff<0?"var(--fairway-dark)":diff>0?"var(--red)":"var(--text-light)",fontSize:13}}>{diff===null?"":diff===0?"E":diff>0?`+${diff}`:diff}</td>;
+                      return(
+                        <td key={i} className="vp-row" style={{color:diff<0?"var(--fairway-dark)":diff>0?"var(--red)":"var(--text-light)"}}>
+                          {diff===null?"":diff===0?"E":diff>0?`+${diff}`:diff}
+                        </td>
+                      );
                     })}
-                    <td className="vp-row" style={{color:st.vspar<0?"var(--fairway-dark)":st.vspar>0?"var(--red)":"var(--text-light)",fontFamily:"'Press Start 2P',monospace",fontSize:7}}>{st.total?(st.vspar===0?"E":st.vspar>0?`+${st.vspar}`:st.vspar):""}</td>
+                    <td className="vp-row" style={{color:st.vspar<0?"var(--fairway-dark)":st.vspar>0?"var(--red)":"var(--text-light)",fontFamily:"'Press Start 2P',monospace",fontSize:7}}>
+                      {st.total?(st.vspar===0?"E":st.vspar>0?`+${st.vspar}`:st.vspar):""}
+                    </td>
                   </tr>
                 </React.Fragment>
               );
@@ -1231,15 +1364,15 @@ function HoleTableReadOnly({label,holeOffset,pars,scores,players}){
     <div>
       <div className="tbl-label">{label}</div>
       <div className="tbl-wrap">
-        <table className="tbl" style={{minWidth:340}}>
+        <table className="tbl">
           <thead>
             <tr>
-              <th style={{minWidth:50}}>HOLE</th>
+              <th>HOLE</th>
               {pars.map((_,i)=><th key={i}>{holeOffset+i+1}</th>)}
               <th>TOT</th>
             </tr>
             <tr>
-              <td className="par-row" style={{fontFamily:"'Press Start 2P',monospace",fontSize:7}}>PAR</td>
+              <td className="par-row" style={{fontFamily:"'Press Start 2P',monospace",fontSize:8}}>PAR</td>
               {pars.map((p,i)=><td key={i} className="par-row">{p}</td>)}
               <td className="par-row tot-cell">{pars.reduce((a,b)=>a+b,0)}</td>
             </tr>
@@ -1250,14 +1383,16 @@ function HoleTableReadOnly({label,holeOffset,pars,scores,players}){
               const st=calcStats(ps,pars);
               return(
                 <tr key={pi}>
-                  <td style={{padding:"2px 4px"}}>
-                    <div style={{display:"flex",alignItems:"center",gap:4}}>
-                      <div style={{width:7,height:7,background:PLAYER_COLORS[pi],borderRadius:"50%",flexShrink:0}}/>
-                      <span style={{fontSize:14,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",maxWidth:38}}>{player}</span>
+                  <td className="tbl-player-cell">
+                    <div className="tbl-player-inner">
+                      <div className="tbl-player-dot" style={{background:PLAYER_COLORS[pi]}}/>
+                      <span className="tbl-player-name">{player}</span>
                     </div>
                   </td>
                   {ps.map((s,i)=>(
-                    <td key={i} style={{background:s!==""?cellBg(s,pars[i]):"var(--white)",color:s!==""?cellFg(s,pars[i]):"var(--text)",fontWeight:"bold",fontSize:17}}>{s}</td>
+                    <td key={i} style={{background:s!==""?cellBg(s,pars[i]):"var(--white)",color:s!==""?cellFg(s,pars[i]):"var(--text)",fontWeight:"bold"}}>
+                      {s}
+                    </td>
                   ))}
                   <td className="tot-cell">{st.total||""}</td>
                 </tr>
