@@ -510,8 +510,8 @@ style.textContent = `
   /* ±PAR row — 40% taller */
   table.tbl td.vp-row {
     background: var(--off-white);
-    font-size: 28px;
-    padding: 7px 2px;
+    font-size: 20px;
+    padding: 5px 2px;
   }
 
   /* Score dropdown inside cell */
@@ -576,7 +576,7 @@ style.textContent = `
     table.tbl td:first-child { min-width: 50px; }
     table.tbl td.par-row { font-size: 18px; padding: 4px 1px; }
     table.tbl td.tot-cell { font-size: 8px; padding: 3px 2px; }
-    table.tbl td.vp-row { font-size: 22px; padding: 3px 1px; }
+    table.tbl td.vp-row { font-size: 16px; padding: 3px 1px; }
     .score-sel { font-size: 22px; padding: 3px 0; min-height: 32px; }
     .tbl-player-name { font-size: 15px; max-width: 40px; }
   }
