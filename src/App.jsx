@@ -702,7 +702,7 @@ function ThemePickerModal({currentTheme, onSelect, onClose}){
   return(
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal theme-modal" onClick={e=>e.stopPropagation()}>
-        <div className="modal-hdr">🎨 CHOOSE THEME</div>
+        <div className="modal-hdr"> CHOOSE THEME</div>
         <div className="modal-body" style={{padding:"14px"}}>
           {Object.values(THEMES).map(theme=>{
             const vis = THEME_VISUALS[theme.key];
